@@ -50,7 +50,7 @@ search() {
       exit 0
     fi
 
-		search=$(gum spin --title "looking for ${title}" --show-output -- curl -s "https://${LANGUAGE}.wikipedia.org/w/api.php?action=opensearch&format=json&search=${title}" | jq -r)
+    search=$(gum spin --title "looking for ${title}" --show-output -- curl -s "https://${LANGUAGE}.wikipedia.org/w/api.php?action=opensearch&format=json&search=${title}" | jq -r)
 
     declare -a links=()
     for item in ${search[*]}; do
