@@ -11,3 +11,5 @@
 - [curl](https://curl.se/)
 - [jq](https://jqlang.github.io/jq/)
 - [zathura](https://pwmt.org/projects/zathura/)
+
+![example](example.gif)
