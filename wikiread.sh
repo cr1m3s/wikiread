@@ -4,10 +4,13 @@ LANGUAGE="en"
 DOCPATH="$HOME/Documents/wikiread/"
 
 main() {
-  [ -d $DOCPATH ] && echo "Directory $DOCPATH exists" || mkdir $DOCPATH
-
-  options=("Search" "Language" "Clean")
-  echo "Select one option or press Ctrl+C to exit"
+	if [ ! -d $DOCPATH ]; then
+		mkdir $DOCPATH && green_style "Folder $DOCPATH created"
+	fi
+	orange_style "Results stored in $DOCPATH"
+	pink_style "Select one option or press Ctrl+C to exit"
+	
+	options=("Search" "Language" "Clean")
 
   while true; do
     option=$(gum choose ${options[*]})
@@ -32,6 +35,19 @@ main() {
     esac
   done
 }
+
+green_style() {
+	gum style --border=rounded --align center --width 50 --foreground "#008000" --border-foreground "#008000" -- "$1"
+}
+
+pink_style() {
+	gum style --border=rounded --align center --width 50 --foreground 212 --border-foreground 212 -- "$1"
+}
+
+orange_style() {
+	gum style --border rounded --align center --width 50 --foreground "#FF7F50" --border-foreground "#FF7F50" -- "$1"
+}
+
 
 change_language() {
   languages=("en" "simple" "fr")
